@@ -22,11 +22,8 @@ public class Config {
 
         System.setProperty("webdriver.gecko.driver", System.getenv("GECKO_PATH"));
 
-        System.setProperty("headless", "false");
-        String headless = System.getProperty("headless");
-
         FirefoxDriverManager.firefoxdriver();
-        if ("true".equals(headless)) {
+        if (System.getenv("HEADLESS").equals("true")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.addArguments("--headless");
             driver = new FirefoxDriver(firefoxOptions);
