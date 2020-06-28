@@ -8,19 +8,14 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import pageobjects.*;
-
 public class Config {
 
-    private WebDriver driver;
-
-    protected Helpers helpers;
-    protected Google google;
+    protected WebDriver driver;
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {
 
-        System.setProperty("webdriver.gecko.driver", System.getenv("GECKO_PATH"));
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
 
         FirefoxDriverManager.firefoxdriver();
         if (System.getenv("HEADLESS").equals("true")) {
@@ -32,9 +27,6 @@ public class Config {
         }
 
         driver.get(System.getenv("BASEURL"));
-
-        helpers = new Helpers(driver);
-        google = new Google(driver);
     }
 
     @AfterSuite

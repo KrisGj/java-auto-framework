@@ -16,9 +16,9 @@ public class Helpers {
     private static final int TIMEOUT = 5;
     private static final int POLLING = 100;
 
-    protected WebDriver driver;
+    protected final WebDriver driver;
 
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
 
     public Helpers(WebDriver driver) {
         wait = new WebDriverWait(driver, TIMEOUT, POLLING);
@@ -27,7 +27,7 @@ public class Helpers {
     }
 
     public void waitForPageLoad() {
-        ExpectedCondition<Boolean> pageLoadCondition = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+        ExpectedCondition<Boolean> pageLoadCondition = driver -> driver != null && ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(pageLoadCondition);
     }
