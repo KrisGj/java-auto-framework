@@ -13,7 +13,7 @@ public class Google extends Helpers {
     @FindBy(xpath = "//input[@title='Пребарајте']")
     private WebElement searchField;
 
-    @FindBy(xpath = "//div[@id='resultStats']")
+    @FindBy(xpath = "//div[@id='appbar']")
     private WebElement searchResultsPageHeader;
 
     public Google(WebDriver driver) {
