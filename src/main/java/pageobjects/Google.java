@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class Google extends Helpers {
 
-    @FindBy(xpath = "//input[@title='Пребарајте']")
+    @FindBy(xpath = "//input[@name='q']")
     private WebElement searchField;
 
     @FindBy(xpath = "//div[@id='appbar']")
