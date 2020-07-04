@@ -21,3 +21,4 @@ jobs:
         env:
           BASEURL: https://www.google.com
           HEADLESS: TRUE
+          GECKOWEBDRIVER: /usr/local/share/gecko_driver/geckodriver
