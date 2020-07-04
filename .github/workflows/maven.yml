@@ -21,4 +21,3 @@ jobs:
         env:
           BASEURL: https://www.google.com
           HEADLESS: TRUE
-          GECKOPATH: $GECKODRIVER_DIR/geckodriver
