@@ -1,11 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-
 <suite name="Testsuite">
-
+    <listeners>
+        <listener class-name="framework.TestListener"/>
+    </listeners>
     <test name="Test">
         <classes>
-            <class name="testsuite.DummyTest" />
+            <class name="testsuite.DummyTest"/>
         </classes>
     </test>
-
 </suite>
