@@ -24,7 +24,7 @@ public class Config {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        System.setProperty("webdriver.gecko.driver", System.getenv("GECKOPATH"));
+        System.setProperty("webdriver.gecko.driver", System.getenv("GECKOWEBDRIVER"));
         FirefoxDriverManager.firefoxdriver();
         if (System.getenv("HEADLESS").equals("true")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
