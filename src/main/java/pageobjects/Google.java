@@ -27,8 +27,8 @@ public class Google extends Helpers {
         this.waitForElementToAppear(searchResultsPageHeader);
     }
 
-    public void selectSearchResult(String searchResultUrl) {
-        driver.findElement(By.xpath("//a[@href=\"" + searchResultUrl + "\"]")).click();
+    public void selectSearchResult(String resultTitle) {
+        driver.findElement(By.xpath("//h3[contains(text(),\"" + resultTitle + "\")]")).click();
         this.waitForPageLoad();
     }
 }
