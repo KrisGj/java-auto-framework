@@ -19,6 +19,6 @@ public class DummyTest extends Config {
     @Test
     public void googleTest() {
         google.enterAndSubmitSearch("Twitter");
-        google.selectSearchResult("http://twitter.com/");
+        google.selectSearchResult("Twitter. It's what's happening.");
     }
 }
