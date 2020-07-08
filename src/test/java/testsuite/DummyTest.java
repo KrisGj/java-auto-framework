@@ -1,13 +1,13 @@
 package testsuite;
 
-import framework.Config;
+import framework.TestBase;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import pageobjects.Google;
 
-public class DummyTest extends Config {
+public class DummyTest extends TestBase {
 
     Google google;
 
