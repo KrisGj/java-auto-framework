@@ -4,13 +4,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ThreadGuard;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 
 public class TestBase {
 
@@ -23,19 +21,17 @@ public class TestBase {
         }
     }
 
-    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setLogLevel(FirefoxDriverLogLevel.WARN);
+        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
         if (System.getenv("HEADLESS").equals("true")) {
             firefoxOptions.addArguments("--headless");
         }
-        driver = new FirefoxDriver(firefoxOptions);
+        driver = ThreadGuard.protect(new FirefoxDriver(firefoxOptions));
         driver.get(System.getenv("BASEURL"));
     }
 
-    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.quit();
     }

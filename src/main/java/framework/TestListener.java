@@ -29,11 +29,11 @@ public class TestListener implements ITestListener {
     }
 
     public void onTestSuccess(ITestResult result) {
-        System.out.println("PASSED: " + result.getTestClass().getName());
+        System.out.println("PASSED: " + result.getTestClass().getName() + " ==> " + result.getName());
     }
 
     public void onTestFailure(ITestResult result) {
-        System.out.println("FAILED: " + result.getTestClass().getName());
+        System.out.println("FAILED: " + result.getTestClass().getName() + " ==> " + result.getName());
     }
 
     public void onTestSkipped(ITestResult result) {

@@ -3,8 +3,6 @@ package framework;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -42,14 +40,5 @@ public class Helpers {
 
     protected void waitForTextToDisappear(WebElement element, String text) {
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(element, text)));
-    }
-
-    protected boolean doesElementExist(String id) {
-        try {
-            driver.findElement(By.id(id));
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-        return true;
     }
 }
