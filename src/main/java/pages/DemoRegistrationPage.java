@@ -143,7 +143,6 @@ public class DemoRegistrationPage extends Helpers {
 
     public void submitInformation() {
         submitButton.click();
-        waitForElementToDisappear(submitButton);
         waitForPageLoad();
     }
 
