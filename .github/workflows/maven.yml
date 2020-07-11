@@ -19,5 +19,5 @@ jobs:
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml
         env:
-          BASEURL: https://www.google.com
+          BASEURL: http://demo.automationtesting.in
           HEADLESS: TRUE

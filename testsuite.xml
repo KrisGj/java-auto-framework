@@ -1,11 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Testsuite">
+<suite name="Testsuite" parallel="methods" thread-count="2">
     <listeners>
         <listener class-name="framework.TestListener"/>
     </listeners>
     <test name="Test">
         <classes>
-            <class name="testsuite.DummyTest"/>
+            <class name="testsuite.DemoTestOne"/>
+            <class name="testsuite.DemoTestTwo"/>
         </classes>
     </test>
 </suite>
