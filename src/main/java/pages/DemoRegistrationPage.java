@@ -143,7 +143,7 @@ public class DemoRegistrationPage extends Helpers {
 
     public void submitInformation() {
         submitButton.click();
-        waitForElementToDisappear(driver.findElement(By.xpath("//h2[contains(text(),'Register')]")));
+        waitForElementToDisappear(submitButton);
         waitForPageLoad();
     }
 
