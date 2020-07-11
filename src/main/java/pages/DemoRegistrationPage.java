@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import framework.Helpers;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -147,6 +148,11 @@ public class DemoRegistrationPage extends Helpers {
     }
 
     public boolean isUsersTablePresent() {
-        return usersTable.isDisplayed();
+        try {
+            waitForElementToAppear(usersTable);
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return true;
     }
 }

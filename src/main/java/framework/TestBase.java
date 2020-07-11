@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ThreadGuard;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.BeforeClass;
@@ -27,7 +28,7 @@ public class TestBase {
         if (System.getenv("HEADLESS").equals("true")) {
             firefoxOptions.addArguments("--headless");
         }
-        driver = new FirefoxDriver(firefoxOptions);
+        driver = ThreadGuard.protect(new FirefoxDriver(firefoxOptions));
         driver.get(System.getenv("BASEURL"));
     }
 
