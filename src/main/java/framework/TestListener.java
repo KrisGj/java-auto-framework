@@ -22,6 +22,7 @@ public class TestListener implements ITestListener {
                 }
             }
         }
+        System.out.println("TEST RUN STARTED AT: " + context.getStartDate() + ", AND ENDED AT: " + context.getEndDate());
     }
 
     public void onTestStart(ITestResult result) {
@@ -37,7 +38,7 @@ public class TestListener implements ITestListener {
     }
 
     public void onTestSkipped(ITestResult result) {
-
+        System.out.println("SKIPPED: " + result.getTestClass().getName() + " ==> " + result.getName());
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
