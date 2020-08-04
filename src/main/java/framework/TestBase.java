@@ -8,11 +8,17 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ThreadGuard;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 public class TestBase {
 
-    protected WebDriver driver;
+    public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    protected WebDriver getDriver() {
+        return driver.get();
+    }
 
     @BeforeClass(alwaysRun = true)
     public void retryHandler(ITestContext context) {
@@ -21,18 +27,20 @@ public class TestBase {
         }
     }
 
+    @BeforeMethod
     public void setUp() {
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
+        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
         if (System.getenv("HEADLESS").equals("true")) {
             firefoxOptions.addArguments("--headless");
         }
-        driver = ThreadGuard.protect(new FirefoxDriver(firefoxOptions));
-        driver.get(System.getenv("BASEURL"));
+        driver.set(ThreadGuard.protect(new FirefoxDriver(firefoxOptions)));
+        getDriver().get(System.getenv("BASEURL"));
     }
 
+    @AfterMethod
     public void tearDown() {
-        driver.quit();
+        getDriver().quit();
     }
 }

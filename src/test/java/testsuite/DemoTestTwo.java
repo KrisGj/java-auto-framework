@@ -1,8 +1,10 @@
 package testsuite;
 
 import framework.TestBase;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import pages.DemoRegistrationPage;
 
 public class DemoTestTwo extends TestBase {
@@ -10,9 +12,7 @@ public class DemoTestTwo extends TestBase {
     @Test
     public void createUserTwo() {
 
-        setUp();
-
-        DemoRegistrationPage demoRegistrationPage = new DemoRegistrationPage(driver);
+        DemoRegistrationPage demoRegistrationPage = new DemoRegistrationPage(getDriver());
         demoRegistrationPage.navigateToRegistration();
         demoRegistrationPage.enterFirstAndLastName();
         demoRegistrationPage.enterAddress("1626 Bedford Avenue, Brooklyn, NY 11225");
@@ -27,7 +27,5 @@ public class DemoTestTwo extends TestBase {
         demoRegistrationPage.submitInformation();
 
         Assert.assertTrue(demoRegistrationPage.isUsersTablePresent());
-
-        tearDown();
     }
 }
