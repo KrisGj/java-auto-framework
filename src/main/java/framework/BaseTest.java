@@ -12,7 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-public class TestBase {
+public class BaseTest {
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 

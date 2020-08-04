@@ -7,9 +7,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Helpers {
+public class BasePage {
 
     private static final int TIMEOUT = 5;
     private static final int POLLING = 100;
@@ -18,7 +19,7 @@ public class Helpers {
 
     private final WebDriverWait wait;
 
-    public Helpers(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         wait = new WebDriverWait(driver, TIMEOUT, POLLING);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
         this.driver = driver;
@@ -40,5 +41,10 @@ public class Helpers {
 
     protected void waitForTextToDisappear(WebElement element, String text) {
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(element, text)));
+    }
+
+    protected void dropdownSelectByVisibleText(WebElement element, String text) {
+        Select selectSkill = new Select(element);
+        selectSkill.selectByVisibleText(text);
     }
 }
