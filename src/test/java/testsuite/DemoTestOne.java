@@ -1,13 +1,13 @@
 package testsuite;
 
-import framework.TestBase;
+import framework.BaseTest;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pages.DemoRegistrationPage;
 
-public class DemoTestOne extends TestBase {
+public class DemoTestOne extends BaseTest {
 
     @Test
     public void createUserOne() {

@@ -1,7 +1,8 @@
 package pages;
 
 import com.github.javafaker.Faker;
-import framework.Helpers;
+
+import framework.BasePage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -9,11 +10,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.Random;
 
-public class DemoRegistrationPage extends Helpers {
+public class DemoRegistrationPage extends BasePage {
 
     Faker faker = new Faker();
 
@@ -119,22 +119,18 @@ public class DemoRegistrationPage extends Helpers {
     }
 
     public void selectSkill(String skill) {
-        Select selectSkill = new Select(skillsDropdown);
-        selectSkill.selectByVisibleText(skill);
+        dropdownSelectByVisibleText(skillsDropdown, skill);
     }
 
     public void selectCountry(String country) {
-        Select selectCountry = new Select(countriesDropdown);
-        selectCountry.selectByVisibleText(country);
+        dropdownSelectByVisibleText(countriesDropdown, country);
+
     }
 
     public void enterDateOfBirth(String year, String month, String day) {
-        Select selectYear = new Select(yearDropdown);
-        Select selectMonth = new Select(monthDropdown);
-        Select selectDay = new Select(dayDropdown);
-        selectYear.selectByVisibleText(year);
-        selectMonth.selectByVisibleText(month);
-        selectDay.selectByVisibleText(day);
+        dropdownSelectByVisibleText(yearDropdown, year);
+        dropdownSelectByVisibleText(monthDropdown, month);
+        dropdownSelectByVisibleText(dayDropdown, day);
     }
 
     public void enterPassword(String password) {
