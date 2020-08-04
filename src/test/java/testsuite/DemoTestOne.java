@@ -12,9 +12,7 @@ public class DemoTestOne extends TestBase {
     @Test
     public void createUserOne() {
 
-        setUp();
-
-        DemoRegistrationPage demoRegistrationPage = new DemoRegistrationPage(driver);
+        DemoRegistrationPage demoRegistrationPage = new DemoRegistrationPage(getDriver());
         demoRegistrationPage.navigateToRegistration();
         demoRegistrationPage.enterFirstAndLastName();
         demoRegistrationPage.enterAddress("1626 Bedford Avenue, Brooklyn, NY 11225");
@@ -29,7 +27,5 @@ public class DemoTestOne extends TestBase {
         demoRegistrationPage.submitInformation();
 
         Assert.assertTrue(demoRegistrationPage.isUsersTablePresent());
-
-        tearDown();
     }
 }
