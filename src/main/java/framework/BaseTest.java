@@ -19,6 +19,7 @@ public class BaseTest {
     public void setUp(@Optional("chrome") String browser) {
 
         WebDriverManager.setWebDriver(WebDriverFactory.getDriver(BrowserType.fromValue(browser)));
+        WebDriverManager.getDriver().get(System.getenv("HOST"));
     }
 
     /**
