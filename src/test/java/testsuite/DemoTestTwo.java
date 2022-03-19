@@ -12,7 +12,7 @@ public class DemoTestTwo extends BaseTest {
     @Test
     public void createUserTwo() {
 
-        DemoRegistrationPage demoRegistrationPage = new DemoRegistrationPage(getDriver());
+        DemoRegistrationPage demoRegistrationPage = new DemoRegistrationPage();
         demoRegistrationPage.navigateToRegistration();
         demoRegistrationPage.enterFirstAndLastName();
         demoRegistrationPage.enterAddress("1626 Bedford Avenue, Brooklyn, NY 11225");

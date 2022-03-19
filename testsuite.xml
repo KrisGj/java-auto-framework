@@ -2,6 +2,7 @@
 <suite name="Testsuite" parallel="methods" thread-count="2">
     <listeners>
         <listener class-name="framework.TestListener"/>
+        <listener class-name="framework.AnnotationTransformer"/>
     </listeners>
     <test name="Test">
         <classes>

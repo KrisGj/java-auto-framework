@@ -11,6 +11,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
+
         Set<ITestResult> failedTests = context.getFailedTests().getAllResults();
         for (ITestResult temp : failedTests) {
             ITestNGMethod method = temp.getMethod();
@@ -30,14 +31,17 @@ public class TestListener implements ITestListener {
     }
 
     public void onTestSuccess(ITestResult result) {
+
         System.out.println("PASSED: " + result.getTestClass().getName() + " ==> " + result.getName());
     }
 
     public void onTestFailure(ITestResult result) {
+
         System.out.println("FAILED: " + result.getTestClass().getName() + " ==> " + result.getName());
     }
 
     public void onTestSkipped(ITestResult result) {
+
         System.out.println("SKIPPED: " + result.getTestClass().getName() + " ==> " + result.getName());
     }
 
