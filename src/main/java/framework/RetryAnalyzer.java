@@ -3,20 +3,22 @@ package framework;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-public class Retry implements IRetryAnalyzer {
+public class RetryAnalyzer implements IRetryAnalyzer {
 
-    private int count = 0;
+    private int RETRY_COUNT = 0;
 
     public boolean retry(ITestResult result) {
-        if (count < 2) {
-            System.out.println("Retrying test " + result.getName() + " with status " + getResultStatusName(result.getStatus()) + " for the " + (count + 1) + " time(s).");
-            count++;
+
+        if (RETRY_COUNT < 2) {
+            System.out.println("Retrying test " + result.getName() + " with status " + getResultStatusName(result.getStatus()) + " for the " + (RETRY_COUNT + 1) + " time(s).");
+            RETRY_COUNT++;
             return true;
         }
         return false;
     }
 
     public String getResultStatusName(int status) {
+
         String resultName = null;
         if (status == 1)
             resultName = "SUCCESS";

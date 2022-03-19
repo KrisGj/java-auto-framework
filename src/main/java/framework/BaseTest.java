@@ -1,46 +1,32 @@
 package framework;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import framework.driver.*;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ThreadGuard;
-import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 public class BaseTest {
 
-    public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-
-    protected WebDriver getDriver() {
-        return driver.get();
-    }
-
-    @BeforeClass(alwaysRun = true)
-    public void retryHandler(ITestContext context) {
-        for (ITestNGMethod method : context.getAllTestMethods()) {
-            method.setRetryAnalyzerClass(Retry.class);
-        }
-    }
-
+    /**
+     * Starts an instance of this browser type.
+     *
+     * @param browser the type of browser instance to start; defaults to "chrome" if not provided in TestNG XML
+     */
+    @Parameters({"browser"})
     @BeforeMethod
-    public void setUp() {
-        WebDriverManager.firefoxdriver().setup();
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
-        if (System.getenv("HEADLESS").equals("true")) {
-            firefoxOptions.addArguments("--headless");
-        }
-        driver.set(ThreadGuard.protect(new FirefoxDriver(firefoxOptions)));
-        getDriver().get(System.getenv("BASEURL"));
+    public void setUp(@Optional("chrome") String browser) {
+
+        WebDriverManager.setWebDriver(WebDriverFactory.getDriver(BrowserType.fromValue(browser)));
     }
 
+    /**
+     * Quits the instance of the currently running browser type.
+     */
     @AfterMethod
     public void tearDown() {
-        getDriver().quit();
+
+        WebDriverManager.quitDriver();
     }
 }

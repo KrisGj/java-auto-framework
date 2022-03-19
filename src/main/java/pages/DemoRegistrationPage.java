@@ -62,8 +62,8 @@ public class DemoRegistrationPage extends BasePage {
     @FindBy(xpath = "//div[@class='ui-grid-contents-wrapper']")
     private WebElement usersTable;
 
-    public DemoRegistrationPage(WebDriver driver) {
-        super(driver);
+    public DemoRegistrationPage() {
+        super();
         PageFactory.initElements(driver, this);
     }
 
