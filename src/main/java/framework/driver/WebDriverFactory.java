@@ -19,7 +19,7 @@ public class WebDriverFactory {
     /**
      * Sets the WebDriver to this browser type.
      *
-     * @param browser String representation of browser type, for example "chrome"; String value is case-insensitive
+     * @param browser String representation of the browser type, for example "chrome"; String value is case-insensitive
      * @return a WebDriver of the selected browser type
      */
     public static WebDriver getDriver(BrowserType browser) {
@@ -30,7 +30,6 @@ public class WebDriverFactory {
         };
 
         driver.manage().window().fullscreen();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(DEFAULT_WAIT_IN_SECONDS));
         return driver;
     }
@@ -64,10 +63,6 @@ public class WebDriverFactory {
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--disable-dev-shm-usage");
         chromeOptions.addArguments("--no-proxy-server");
-
-        if (Boolean.parseBoolean(System.getenv("INCOGNITO"))) {
-            chromeOptions.addArguments("--incognito");
-        }
 
         if (Boolean.parseBoolean(System.getenv("HEADLESS"))) {
             chromeOptions.addArguments("--headless");

@@ -6,8 +6,8 @@
     </listeners>
     <test name="Test">
         <classes>
-            <class name="testsuite.DemoTestOne"/>
-            <class name="testsuite.DemoTestTwo"/>
+            <class name="testsuite.TestGroupOne"/>
+            <class name="testsuite.TestGroupTwo"/>
         </classes>
     </test>
 </suite>

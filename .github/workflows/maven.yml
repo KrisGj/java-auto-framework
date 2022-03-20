@@ -19,5 +19,5 @@ jobs:
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml
         env:
-          HOST: http://demo.automationtesting.in
+          HOST: https://demoqa.com
           HEADLESS: TRUE

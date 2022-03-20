@@ -17,8 +17,8 @@ public enum BrowserType {
     /**
      * Gets an enum representation of this String value browser type. String value is case-insensitive.
      *
-     * @param type String representation of browser type, for example "chrome"
-     * @return enum representation of browser type, for example CHROME
+     * @param type String representation of the browser type, for example "chrome"
+     * @return enum representation of browser the type, for example CHROME
      */
     public static BrowserType fromValue(String type) {
 
