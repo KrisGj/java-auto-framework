@@ -2,6 +2,7 @@ package framework;
 
 import framework.driver.WebDriverManager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
@@ -36,9 +37,14 @@ public class BasePage {
         wait.until(pageLoadCondition);
     }
 
-    protected void waitForElementToAppear(WebElement element) {
+    protected WebElement waitForElementToAppear(WebElement element) {
 
-        wait.until(ExpectedConditions.visibilityOf(element));
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected WebElement waitForElementToAppearBy(By by) {
+
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     protected void waitForElementToDisappear(WebElement element) {
